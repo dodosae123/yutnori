@@ -15,23 +15,19 @@ public:
 
     void showPieces();
 
-    void enabled_pieces(bool enabled)
+    void activate_pieces()
     {
-        for(std::size_t i=0;i<=enabled_index_;++i)
+        for(std::size_t i=0;i<number_of_pieces;++i)
         {
-            pieces_[i].enabled(enabled);
+            pieces_[i].activate();
         }
     }
-
-    void increase_enabled_index()
+    void deactive_pieces()
     {
-        ++enabled_index_;
-        enabled_pieces(true);
-    }
-    void decrease_enabled_index()
-    {
-        enabled_pieces(false);
-        --enabled_index_;
+        for(std::size_t i=0;i<number_of_pieces;++i)
+        {
+            pieces_[i].deactivate();
+        }
     }
 
     static std::size_t number_of_pieces;

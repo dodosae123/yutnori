@@ -32,9 +32,18 @@ public:
         return selected_piece_;
     }
 
+    void count(std::size_t count)
+    {
+        count_ = count;
+    }
+    std::size_t count()
+    {
+        return count_;
+    }
+
     void turn_over()
     {
-        players_[turn_].enabled_pieces(false);
+        players_[turn_].deactive_pieces();
         turn_ = (turn_ + 1) % number_of_players;
 
     }

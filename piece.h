@@ -17,13 +17,12 @@ public:
 
     enum State
     {
-        UNAVAILABLE,
         READY_TO,
         ON_FIELD,
         FINISHED
     };
 
-    piece(piece_kind kind, QWidget *parent);
+    piece(piece_kind kind, int x, int y, QWidget *parent);
 
     QPushButton* getPiece();
 
@@ -31,7 +30,10 @@ public:
     {
         return kind_;
     }
+
+    void setInitialGeometry();
     void setGeometry(int x, int y);
+
     void enabled(bool enabled)
     {
         piece_->setEnabled(enabled);
@@ -44,9 +46,26 @@ public:
     {
         return state_;
     }
+    void activate()
+    {
+        if(state_ == State::READY_TO || state_ == State::ON_FIELD)
+        {
+            piece_->setEnabled(true);
+        }
+        else
+        {
+            piece_->setEnabled(false);
+        }
+    }
+    void deactivate()
+    {
+        piece_->setEnabled(false);
+    }
 
 
 private:
+    int initial_x_;
+    int initial_y_;
     piece_kind kind_;
     piece::State state_;
     QPushButton *piece_{nullptr};

@@ -108,7 +108,7 @@ void maingame::on_pushButton_clicked()
     else{
         count_ = 0;
         count_ += ui->lineEdit->text().toInt();
-        players_[turn_].increase_enabled_index();
+        players_[turn_].activate_pieces();
 
         std::cout << count_ << std::endl;
         ui->lineEdit->clear();

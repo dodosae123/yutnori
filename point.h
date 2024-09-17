@@ -28,7 +28,7 @@ private:
     int height_;
 
     //piece
-    //std::vector<piece> pieces_{};
+    std::vector<piece> pieces_;
 
     direction direction_;
     QPushButton *button_{nullptr};

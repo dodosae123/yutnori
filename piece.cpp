@@ -3,23 +3,22 @@
 #include <iostream>
 #include "manager.h"
 
-piece::piece(piece_kind kind, QWidget *parent)
-    : kind_{kind}, state_{piece::State::UNAVAILABLE}
+piece::piece(piece_kind kind, int x, int y, QWidget *parent)
+    : kind_{kind}, state_{piece::State::READY_TO},
+    initial_x_{x}, initial_y_{y}
 {
     QColor *color = nullptr;
+    piece_ = new QPushButton("1", parent);
     if(kind_ == piece_kind::RED)
     {
-        piece_ = new QPushButton("RED", parent);
         color = new QColor(Qt::red);
     }
     else if(kind_ == piece_kind::GREEN)
     {
-        piece_ = new QPushButton("GREEN", parent);
         color = new QColor(Qt::green);
     }
     else if(kind_ == piece_kind::BLUE)
     {
-        piece_ = new QPushButton("BLUE", parent);
         color = new QColor(Qt::blue);
     }
 
@@ -36,6 +35,11 @@ piece::piece(piece_kind kind, QWidget *parent)
 QPushButton* piece::getPiece()
 {
     return piece_;
+}
+
+void piece::setInitialGeometry()
+{
+    piece_->setGeometry(initial_x_, initial_y_, 50, 50);
 }
 
 void piece::setGeometry(int x, int y)
