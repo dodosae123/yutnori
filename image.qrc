@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>yutnori.PNG</file>
+        <file>board.PNG</file>
+    </qresource>
+</RCC>
